@@ -20,6 +20,10 @@ class Journal {
   viewEntries() {
     return Object.values(this.entries).join("\n");
   }
+
+  saveToFile(journal, filename) {
+    fs.writeFileSync(journal, filename);
+  }
 }
 
 class PersistenceManager {
