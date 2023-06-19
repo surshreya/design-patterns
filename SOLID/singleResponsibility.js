@@ -1,5 +1,41 @@
 const fs = require("fs");
 
+//BEFORE
+class Journal {
+  constructor() {
+    this.entries = {};
+    this.count = 0;
+  }
+
+  addEntry(text) {
+    let idx = ++this.count;
+    let entry = `${idx}: ${text}`;
+    this.entries[idx] = entry;
+    return idx;
+  }
+
+  removeEntry(idx) {
+    delete this.entries[idx];
+  }
+
+  viewEntries() {
+    return Object.values(this.entries).join("\n");
+  }
+
+  saveToFile(journal, filename) {
+    fs.writeFileSync(journal, filename);
+  }
+
+  loadFromFile() {}
+
+  loadFromURL() {}
+
+  saveToURL() {}
+
+  preprocess() {}
+}
+
+//AFTER
 class Journal {
   constructor() {
     this.entries = {};
